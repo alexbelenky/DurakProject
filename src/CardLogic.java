@@ -19,8 +19,18 @@ public class CardLogic {
         }
     }
 
-    //removes a certain card from the pile of cards (does not remove from the player or opponent)
-    private void removeCard(int i) {
-        cards.remove(i);
+    //removes a certain card from the pile of cards
+    public void removeCard(String rCard) {
+        String[] newCards = new String[cards.length - 1];
+        for (int i = 0, j = 0; i < cards.length - 1; i++, j++) {
+            String card = cards[i];
+            if (rCard.equals(card)) {
+                newCards[i] = cards[j + 1];
+                j++;
+            } else {
+                newCards[i] = cards[j];
+            }
+        }
+        cards = newCards;
     }
 }
