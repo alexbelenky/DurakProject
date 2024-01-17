@@ -13,10 +13,26 @@ public class CardLogic {
         this.cards = cards;
     }
 
-    public void setPlayerCards() {
+    //gives player cards and removes them from pile
+    public String[] setPlayerCards() {
+        String[] playerCards = new String[6];
         for (int i = 0; i < 6; i++) {
-
+            String card = cards[(int) (cards.length * Math.random())];
+            playerCards[i] = card;
+            removeCard(card);
         }
+        return playerCards;
+    }
+
+    //gives opponent cards and removes them from pile
+    public String[] setOpponentCards() {
+        String[] opponentCards = new String[6];
+        for (int i = 0; i < 6; i++) {
+            String card = cards[(int) (cards.length * Math.random())];
+            opponentCards[i] = card;
+            removeCard(card);
+        }
+        return opponentCards;
     }
 
     //removes a certain card from the pile of cards

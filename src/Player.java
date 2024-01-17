@@ -4,4 +4,8 @@ public class Player {
     public Player(String[] playerCards) {
         this.playerCards = playerCards;
     }
+
+    public String[] getPlayerCards() {
+        return playerCards;
+    }
 }
