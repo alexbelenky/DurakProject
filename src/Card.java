@@ -13,18 +13,21 @@ public class Card {
         System.out.println(Visual.welcome());
         if (askQuestionL("Are you ready to play!? y/n").equals("y")) {
             setCards();
+            System.out.println(Visual.showCards(player));
+
         } else {
             System.out.println("Come back later!");
             System.exit(0);
         }
     }
 
-    //sets cards for both player and opponent
+    //sets cards for both player and opponent and picks a kozer
     private static void setCards() {
         String[] playerCards = cardLogic.setPlayerCards();
         player = new Player(playerCards);
         String[] opponentCards = cardLogic.setPlayerCards();
         opponent = new Opponent(opponentCards);
+
     }
 
 

@@ -415,11 +415,28 @@ public class Visual {
 
     //Appropriate space between cards
 
-//    public static String CardSpace() {
-//        return " ";
-//    }
-//
-//    public static String spaceAppend(String c1, String c2) {
-//        return c1 + c2;
-//    }
+    public static String CardSpace() {
+        return """
+               
+               
+               
+               
+               
+               
+                """;
+    }
+
+    public static String spaceAppend(String c1, String c2) {
+        String c2Mod = String.join("             ", c2);
+        return String.join(c1, c2Mod); //DOES NOT WORK
+    }
+
+    //shows the player their cards
+
+    public static String showCards(Player player) {
+        for (String card : player.getPlayerCards()) {
+            //NOT FINISHED
+        }
+        return "";
+    }
 }
