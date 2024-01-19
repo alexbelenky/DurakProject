@@ -35,6 +35,13 @@ public class CardLogic {
         return opponentCards;
     }
 
+    //gives Kozer
+    public String setKozer() {
+        String kozer = cards[(int) (cards.length * Math.random())];
+        removeCard(kozer);
+        return kozer;
+    }
+
     //removes a certain card from the pile of cards
     public void removeCard(String rCard) {
         String[] newCards = new String[cards.length - 1];

@@ -5,7 +5,7 @@ public class Opponent {
         this.opponentCards = opponentCards;
     }
 
-    public String[] getPlayerCards() {
+    public String[] getOpponentCards() {
         return opponentCards;
     }
 }
