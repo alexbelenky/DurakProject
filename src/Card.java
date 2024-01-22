@@ -15,6 +15,7 @@ public class Card {
         System.out.println(Visual.welcome());
         if (askQuestionL("Are you ready to play!? y/n").equals("y")) {
             setCards();
+            System.out.println(Visual.showCards(player));
             System.out.printf("%sThe Kozer is: %s%s", Color.YELLOW, Color.RESET, colorKozer());
 
         } else {
@@ -25,9 +26,9 @@ public class Card {
 
     //sets cards for both player and opponent and picks a kozer
     private static void setCards() {
-        String[] playerCards = cardLogic.setPlayerCards();
+        String[] playerCards = cardLogic.setCards();
         player = new Player(playerCards);
-        String[] opponentCards = cardLogic.setPlayerCards();
+        String[] opponentCards = cardLogic.setCards();
         opponent = new Opponent(opponentCards);
         kozer = cardLogic.setKozer();
     }
@@ -40,9 +41,9 @@ public class Card {
     }
     private static String colorKozer() {
         if (kozer.charAt(0) == 'h' || kozer.charAt(0) == 'd') {
-            return String.format("%s%s%s", Color.RED, kozer, Color.RESET);
+            return String.format("%s%s%s", Color.RED, CardLogic.cardInWords(kozer), Color.RESET);
         } else {
-            return String.format("%s%s%s", Color.WHITE, kozer, Color.RESET);
+            return String.format("%s%s%s", Color.WHITE, CardLogic.cardInWords(kozer), Color.RESET);
         }
     }
 }
