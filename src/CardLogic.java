@@ -49,6 +49,22 @@ public class CardLogic {
         cards = newCards;
     }
 
+    //returns the value of the card
+    public static int returnAsValue (String card) {
+        return switch (card.substring(1)) {
+            case "6" -> 6;
+            case "7" -> 7;
+            case "8" -> 8;
+            case "9" -> 9;
+            case "10" -> 10;
+            case "J" -> 11;
+            case "Q" -> 12;
+            case "K" -> 13;
+            case "A" -> 14;
+            default -> throw new IllegalStateException("Unexpected value: " + card);
+        };
+    }
+
     //returns true if not empty
     public static boolean notEmpty(String card) {
         return !(card.equals("mt"));

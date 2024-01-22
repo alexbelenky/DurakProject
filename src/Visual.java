@@ -10,6 +10,18 @@ public class Visual {
                 """;
     }
 
+    public static String attackChoices() {
+        return """
+               \nWhat will you put down?\n
+               1. Your first card
+               2. Your second card
+               3. Your third card
+               4. Your fourth card
+               5. Your fifth card
+               6. Your sixth card
+                """;
+    }
+
     //shows the player their cards
 
     public static String showCards(Player player) {

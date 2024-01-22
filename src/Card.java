@@ -16,8 +16,8 @@ public class Card {
         if (askQuestionL("Are you ready to play!? y/n").equals("y")) {
             setCards();
             System.out.println(Visual.showCards(player));
-            System.out.printf("%sThe Kozer is: %s%s", Color.YELLOW, Color.RESET, colorKozer());
-
+            System.out.printf("%sThe Kozer is: %s%s", Color.YELLOW, Color.RESET, colorCard(kozer));
+            playGame();
         } else {
             System.out.println("Come back later!");
             System.exit(0);
@@ -33,17 +33,60 @@ public class Card {
         kozer = cardLogic.setKozer();
     }
 
+    //shows the player the next options
+    private static void playGame() {
+        if (turn) {
+            attack();
+        } else {
 
+        }
+    }
+
+    private static void attack() {
+        String card = "";
+        switch (askQuestionL(Visual.attackChoices())) {
+            case "1":
+                card = player.getPlayerCards()[0];
+                System.out.println("You attack with the " + CardLogic.cardInWords(card));
+                break;
+            case "2":
+                card = player.getPlayerCards()[1];
+                System.out.println("You attack with the " + CardLogic.cardInWords(card));
+                break;
+            case "3":
+                card = player.getPlayerCards()[2];
+                System.out.println("You attack with the " + CardLogic.cardInWords(card));
+                break;
+            case "4":
+                card = player.getPlayerCards()[3];
+                System.out.println("You attack with the " + CardLogic.cardInWords(card));
+                break;
+            case "5":
+                card = player.getPlayerCards()[4];
+                System.out.println("You attack with the " + CardLogic.cardInWords(card));
+                break;
+            case "6":
+                card = player.getPlayerCards()[5];
+                System.out.println("You attack with the " + CardLogic.cardInWords(card));
+                break;
+            case "7":
+                System.out.println("Sunday");
+                break;
+        }
+        System.out.printf("%sThe opponent defends with : %s%s", Color.BLUE, Color.RESET, colorCard(opponent.opponentDefend(card)));
+    }
     //Specifically returns as lower case
     private static String askQuestionL(String ques) {
         System.out.println(ques);
         return scan.nextLine().toLowerCase();
     }
-    private static String colorKozer() {
-        if (kozer.charAt(0) == 'h' || kozer.charAt(0) == 'd') {
-            return String.format("%s%s%s", Color.RED, CardLogic.cardInWords(kozer), Color.RESET);
+
+    //returns the card as a color
+    private static String colorCard(String card) {
+        if (card.charAt(0) == 'h' || card.charAt(0) == 'd') {
+            return String.format("%s%s%s", Color.RED, CardLogic.cardInWords(card), Color.RESET);
         } else {
-            return String.format("%s%s%s", Color.WHITE, CardLogic.cardInWords(kozer), Color.RESET);
+            return String.format("%s%s%s", Color.WHITE, CardLogic.cardInWords(card), Color.RESET);
         }
     }
 }
