@@ -9,6 +9,15 @@ public class Opponent {
         return opponentCards;
     }
 
+    private void addCard(String card) {
+        for (int i = 0; i < opponentCards.length; i++) {
+            if (opponentCards[i].equals("mt")) {
+                opponentCards[i] = card;
+                break;
+            }
+        }
+    }
+
     public String opponentDefend(String card) {
         try {
             for (String oppCard : opponentCards) {
@@ -17,10 +26,8 @@ public class Opponent {
                 int oppNumberOfCard = CardLogic.returnAsValue(oppCard);
                 String typeCard = card.substring(0, 1);
                 int numberOfCard = CardLogic.returnAsValue(card);
-                System.out.println(oppCard);
-                System.out.println(card);
                 if (oppTypeCard.equals(typeCard) && (oppNumberOfCard > numberOfCard)) {
-                    return oppCard;
+                    return String.format("%sThe opponent defends with: %s%s", Color.BLUE, Color.RESET, Card.colorCard(oppCard));
                 }
             }
             for (String oppCard : opponentCards) {
@@ -31,15 +38,16 @@ public class Opponent {
 
                 if (oppTypeCard.equals(Card.kozer.substring(0, 1)) && typeCard.equals(Card.kozer.substring(0, 1))) {
                     if (oppNumberOfCard > numberOfCard) {
-                        return oppCard;
+                        return String.format("%sThe opponent defends with: %s%s", Color.BLUE, Color.RESET, Card.colorCard(oppCard));
                     }
                 } else if (oppTypeCard.equals(Card.kozer.substring(0, 1))) {
-                    return oppCard;
+                    return String.format("%sThe opponent defends with: %s%s", Color.BLUE, Color.RESET, Card.colorCard(oppCard));
                 }
             }
         } catch (Exception ignored) {
 
         }
-        return "no lol";
+        addCard(card);
+        return String.format("%sThe opponent takes the %s%s!\n", Color.CYAN, Color.RESET, Card.colorCard(card));
     }
 }

@@ -25,7 +25,7 @@ public class Visual {
     //shows the player their cards
 
     public static String showCards(Player player) {
-        System.out.println("These are your cards: ");
+        System.out.println("\nThese are your cards: ");
         StringBuilder result = new StringBuilder();
 
         for (int row = 0; row < DisplayConstants.NUM_HEIGHT_CHARS; row++) {
