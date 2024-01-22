@@ -19,6 +19,15 @@ public class Player {
         return amountOfCards;
     }
 
+    public void addCard(String card) {
+        for (int i = 0; i < playerCards.length; i++) {
+            if (playerCards[i].equals("mt")) {
+                playerCards[i] = card;
+                break;
+            }
+        }
+    }
+
     //removes card from the deck
     public void removeCardFromPlayer(String card) {
         for (int i = 0; i < playerCards.length; i++) {

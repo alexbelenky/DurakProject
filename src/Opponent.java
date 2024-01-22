@@ -9,6 +9,16 @@ public class Opponent {
         return opponentCards;
     }
 
+    public int getNumberOfOppCards() {
+        int amountOfCards = 0;
+        for (String card : opponentCards) {
+            if (CardLogic.notEmpty(card)) {
+                amountOfCards++;
+            }
+        }
+        return amountOfCards;
+    }
+
     private void addCard(String card) {
         for (int i = 0; i < opponentCards.length; i++) {
             if (opponentCards[i].equals("mt")) {
@@ -18,14 +28,22 @@ public class Opponent {
         }
     }
 
-    public String opponentAttack() {
-        int amountOfCards = 0;
-        for (String card : opponentCards) {
-            if (CardLogic.notEmpty(card)) {
-                amountOfCards++;
+    public void removeCardFromOpponent(String card) {
+        for (int i = 0; i < opponentCards.length; i++) {
+            if (opponentCards[i].equals(card)) {
+                opponentCards[i] = "mt";
+                break;
             }
         }
-        return opponentCards[(int) (amountOfCards * Math.random())];
+    }
+
+    public String opponentAttack() {
+        String card = opponentCards[(int) (getNumberOfOppCards() * Math.random())];
+        while (!(CardLogic.notEmpty(card))) {
+            card = opponentCards[(int) (getNumberOfOppCards() * Math.random())];
+        }
+        removeCardFromOpponent(card);
+        return card;
     }
 
     public String opponentDefend(String card) {
