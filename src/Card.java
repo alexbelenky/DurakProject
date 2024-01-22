@@ -5,6 +5,7 @@ public class Card {
     static CardLogic cardLogic = new CardLogic();
     static String kozer;
     static boolean turn = true; //true means it is the players turn and false means it is the opponent's
+    static boolean game = true; //true means that the game is still on
     static Player player;
     static Opponent opponent;
 
@@ -35,11 +36,14 @@ public class Card {
 
     //shows the player the next options
     private static void playGame() {
-        if (turn) {
-            attack();
-            System.out.println(Visual.showCards(player));
-        } else {
-
+        while (game) {
+            if (turn) {
+                attack();
+                System.out.println(Visual.showCards(player));
+            } else {
+                String oppCard = opponent.opponentAttack();
+//                defend(oppCard);
+            }
         }
     }
 
@@ -84,6 +88,39 @@ public class Card {
         System.out.printf("\n%sYou take %s%s%s from the deck!%s\n", Color.PURPLE, Color.RESET, colorCard(player.takeCardFromDeck(cardLogic)), Color.PURPLE, Color.RESET);
 
     }
+
+//    private static void defend(String oppCard) {
+//        System.out.printf("%sThe opponent attacks with %s%s!", Color.GREEN, Color.RESET, oppCard);
+//        switch (askQuestionL(Visual.attackChoices())) {
+//            case "1":
+//                card = player.getPlayerCards()[0];
+//                System.out.printf("%sYou attack with the%s %s\n", Color.GREEN, Color.RESET, colorCard(card));
+//                break;
+//            case "2":
+//                card = player.getPlayerCards()[1];
+//                System.out.printf("%sYou attack with the%s %s\n", Color.GREEN, Color.RESET, colorCard(card));
+//                break;
+//            case "3":
+//                card = player.getPlayerCards()[2];
+//                System.out.printf("%sYou attack with the%s %s\n", Color.GREEN, Color.RESET, colorCard(card));
+//                break;
+//            case "4":
+//                card = player.getPlayerCards()[3];
+//                System.out.printf("%sYou attack with the%s %s\n", Color.GREEN, Color.RESET, colorCard(card));
+//                break;
+//            case "5":
+//                card = player.getPlayerCards()[4];
+//                System.out.printf("%sYou attack with the%s %s\n", Color.GREEN, Color.RESET, colorCard(card));
+//                break;
+//            case "6":
+//                card = player.getPlayerCards()[5];
+//                System.out.printf("%sYou attack with the%s %s\n", Color.GREEN, Color.RESET, colorCard(card));
+//                break;
+//            case "7":
+//                System.out.println("Sunday");
+//                break;
+//        }
+//    }
 
     //returns the card as a color and in sentence form
     public static String colorCard(String card) {

@@ -10,16 +10,21 @@ public class Visual {
                 """;
     }
 
+    //can modify to make second be 2nd and third to 3rd but too bad!
     public static String attackChoices() {
-        return """
-               \nWhat will you put down?\n
-               1. Your first card
-               2. Your second card
-               3. Your third card
-               4. Your fourth card
-               5. Your fifth card
-               6. Your sixth card
-                """;
+        String result = "\nWhat will you put down?\n1. Your 1st card\n";
+        for (int i = 2; i < Card.player.getNumberOfCards() + 1; i++) {
+            result += String.format("%s. Your %sth card\n", i, i);
+        }
+        return result;
+    }
+
+    public static String defendChoices() {
+        String result = "\nWhat will you defend with?\n1. Your 1st card\n";
+        for (int i = 2; i < Card.player.getNumberOfCards() + 1; i++) {
+            result += String.format("%s. Your %sth card\n", i, i);
+        }
+        return result;
     }
 
     //shows the player their cards

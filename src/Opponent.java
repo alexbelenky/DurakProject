@@ -18,6 +18,16 @@ public class Opponent {
         }
     }
 
+    public String opponentAttack() {
+        int amountOfCards = 0;
+        for (String card : opponentCards) {
+            if (CardLogic.notEmpty(card)) {
+                amountOfCards++;
+            }
+        }
+        return opponentCards[(int) (amountOfCards * Math.random())];
+    }
+
     public String opponentDefend(String card) {
         try {
             for (String oppCard : opponentCards) {
@@ -27,6 +37,7 @@ public class Opponent {
                 String typeCard = card.substring(0, 1);
                 int numberOfCard = CardLogic.returnAsValue(card);
                 if (oppTypeCard.equals(typeCard) && (oppNumberOfCard > numberOfCard)) {
+                    Card.turn = false;
                     return String.format("%sThe opponent defends with: %s%s", Color.BLUE, Color.RESET, Card.colorCard(oppCard));
                 }
             }
@@ -38,9 +49,11 @@ public class Opponent {
 
                 if (oppTypeCard.equals(Card.kozer.substring(0, 1)) && typeCard.equals(Card.kozer.substring(0, 1))) {
                     if (oppNumberOfCard > numberOfCard) {
+                        Card.turn = false;
                         return String.format("%sThe opponent defends with: %s%s", Color.BLUE, Color.RESET, Card.colorCard(oppCard));
                     }
                 } else if (oppTypeCard.equals(Card.kozer.substring(0, 1))) {
+                    Card.turn = false;
                     return String.format("%sThe opponent defends with: %s%s", Color.BLUE, Color.RESET, Card.colorCard(oppCard));
                 }
             }
@@ -48,6 +61,7 @@ public class Opponent {
 
         }
         addCard(card);
+        Card.turn = true;
         return String.format("%sThe opponent takes the %s%s!\n", Color.CYAN, Color.RESET, Card.colorCard(card));
     }
 }

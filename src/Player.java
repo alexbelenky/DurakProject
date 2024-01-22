@@ -9,6 +9,16 @@ public class Player {
         return playerCards;
     }
 
+    public int getNumberOfCards() {
+        int amountOfCards = 0;
+        for (String card : playerCards) {
+            if (CardLogic.notEmpty(card)) {
+                amountOfCards++;
+            }
+        }
+        return amountOfCards;
+    }
+
     //removes card from the deck
     public void removeCardFromPlayer(String card) {
         for (int i = 0; i < playerCards.length; i++) {
